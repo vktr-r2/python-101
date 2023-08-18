@@ -81,6 +81,25 @@ TUPLES
 - IMMUTABLE (cannot modify once declared)
 """
 
+item = ("Health Kit", 4)
+name = item[0]
+quantity = item[1]
+print(name, quantity)
+
+#item[1] = 10                     # This will crash the program because you're trying to change a tuple which is immutable
+
+item = ("Food", 3)                # So while the contents of a tuple are immutable, you can assign a new value to the variable itself
+print(item)
+
+items = (*item, "Health Kit", 4)  # *<tuple> will allow you to copy or spread the conents of another variable into this variable
+print(items)
+
+items = (*items, "Potions", 8)    # *<tuple> can be used to actually add more elements to an existing tuple as a workaround
+print(items)
+ 
+
+print(items.count("Knife"))       # <tuple>.count takes an element as arguement and will return the number of times that element appears in your tuple
+print(items.index("Potions"))     # <tuple>.index takes an element as arguement and will return the index of the first occurance of that elemenet in your tuple
 
 
 
@@ -92,8 +111,6 @@ DICTIONARIES
 - Access values based on key, not index
 - Can also retrieve just a list of keys or just a list of values
 - MUTABLE
-
-
 """
 
 
