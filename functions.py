@@ -48,3 +48,22 @@ learn_more()
 learn_more()
 learn_more()
 
+
+
+# MORE ADVANCED FUNCTIONS
+
+def study_all_night(caffeine, tired, name="Student"):           # Can assign a default value for a param by defining it when the function itself is defined.  DEFAULT VALUES MUST BE LISTED LAST IN LIST OF PARAMS
+  if tired == True and caffeine == True:
+    return(f"{name} keep studying, you can do it! ... TEST PASSED")
+  
+  if tired == True and caffeine == False:
+    return(f"Time for bed {name}:( ... TEST FAILED")
+
+  if tired == False:
+    return(f"You're a champ {name}, you're gunna ace this test! ... TEST CRUSHED")
+
+
+
+print(study_all_night(True, True, "Vik"))
+print(study_all_night(False, True, "Hilary"))
+print(study_all_night(False, False))
