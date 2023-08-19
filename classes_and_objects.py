@@ -13,6 +13,31 @@ CLASSES
 * So an object is an 'instance' of a class.  You INSTANTIATE an object
 """
 
+class PlayerCharacter:                                        # Names of classes use Capitalized Camel-case syntax
+    
+    # x_pos                                                   # Stand alone variables are not declared at the top of classes in Python as they are in other languages.  Instead all these variables are declared in the initializer function
+    # health
+    # name
+
+  # Instance method
+  def __init__(self, name, x_pos, health):                    # Syntax for initializer function: def __init__(self, <other params>)
+    self.name = name                                          #   => every method that isn't a static method MUST HAVE 'SELF' AS FIRST PARAM
+    self.x_pos = x_pos
+    self.health = health
+      
+  def move(self, num_of_steps):                               # Methods do not need the double underscore syntax when being implemented, but still do need to take 'self' as a param       
+    self.x_pos += num_of_steps                                # Set the x_position for this object(self) based on num_of_steps passed as arguement
+                                                              #     => Notice that we don't return the new x_pos value for this method.  This is because there is no need, the new x_pos would be automatically stored/updated in the object itself
+  def take_damage(self, hit_damage):
+    self.health -= hit_damage
+    if self.health < 0:
+      self.health = 0
+  
+  def check_if_dead(self):
+    return self.health == 0                                   # Method will only return True if health == 0
+  
+
+
 
 """
 OBJECTS
