@@ -39,19 +39,19 @@ print(min(inventory))
 
 # List specific methods below
 
-inventory.append("Shield")      # <list>.append method adds element to end of list
+inventory.append("Shield")      # <list>.append(<element>) method adds element to end of list
 print(inventory)
 
-inventory.insert(1, "Potion")   # <list>.insert method takes index param and element to insert element into index argument provided, shifting all other elements back by 1 index
+inventory.insert(1, "Potion")   # <list>.insert(<index>, <element>) method takes index param and element to insert element into index argument provided, shifting all other elements back by 1 index
 print(inventory)
 
-inventory.pop()                 #<list>.pop method removes the last indexed item in the list
+inventory.pop()                 #<list>.pop() method removes the last indexed item in the list
 print(inventory)
 
-inventory.remove("Boots")      #<list>.remove method removes specified item, does not take index
+inventory.remove("Boots")      #<list>.remove(<element>) method removes specified item, does not take index
 print(inventory)
 
-inventory.clear()               #<list>.clear method empties the list.  Can also be achieved via <list> = []
+inventory.clear()               #<list>.clear() method empties the list.  Can also be achieved via <list> = []
 print(inventory)
 
 
@@ -98,8 +98,8 @@ items = (*items, "Potions", 8)    # *<tuple> can be used to actually add more el
 print(items)
  
 
-print(items.count("Knife"))       # <tuple>.count takes an element as arguement and will return the number of times that element appears in your tuple
-print(items.index("Potions"))     # <tuple>.index takes an element as arguement and will return the index of the first occurance of that elemenet in your tuple
+print(items.count("Knife"))       # <tuple>.count(<element>) takes an element as arguement and will return the number of times that element appears in your tuple
+print(items.index("Potions"))     # <tuple>.index(<element>) takes an element as arguement and will return the index of the first occurance of that elemenet in your tuple
 
 
 
@@ -111,7 +111,42 @@ DICTIONARIES
 - Access values based on key, not index
 - Can also retrieve just a list of keys or just a list of values
 - MUTABLE
+- Look a lot like objects in JS
 """
+inventory = {
+    "Weapons": ["Knife", "Sword"],
+    "Armour": True,
+    "Health Kit": 8,
+    "Wood": 5,
+    "Food": 4,
+    "Potions": {
+        "Speed": 4,
+        "Strength": 1,
+        "Fire": 2
+    }
+}
+
+print(inventory["Potions"]["Fire"])           # Can reference values using square bracket notation
+
+inventory["Weapons"].append("Axe")            # Can modify existing values
+print(inventory["Weapons"])
+
+inventory["Water"] = 0                        # Can add new key/value pairs if key referenced doesn't exist
+inventory["Wood"] = 2                         # Can modify existing values
+print(inventory)
+
+#print(inventory["Gold"])                      # Referencing a key that doesn't exist will throw an error
+print(inventory.get("Gold"))                  # To avoid potential errors, use <dictionary>.get(<key>) method.  If key doesn't exist "None" will be returned
+print(inventory.get("Weapons"))               # <dictionary>.get(<key>) will return value for key if key exists
+
+keys = inventory.keys()                         # <dictionary>.keys(() will return iterable list of all available keys in the dictionary
+print(keys)
+values = inventory.values()                       # <dictionary>.values() will return iterable list of all available keys in the dictionary
+print(values)
+
+inventory.pop("Water")                        # <dictionary>.pop(<element>) will remove a key value pair from your diction
+print(inventory)
+
 
 
 """
@@ -123,4 +158,7 @@ RANGES
 - Can also specify step value
 - Can wrap in reversed() function to count backwards
 """
+
+
+
 
