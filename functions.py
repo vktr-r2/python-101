@@ -27,3 +27,24 @@ RETURN VALUES
 - Can store the output as a variable when calling the function
 
 """
+
+
+
+# SIMPLE FUNCTIONS IN ACTION
+
+def name_of_function():               # Use def to define/declare a new function, params would go in ()
+  code_goes_here = []                 # Code that functione executes
+
+
+knowledge_base = 10
+
+def learn_more():
+  global knowledge_base               # IMPORTANT => Variables are not global automatically.  They need to be declared global within the function code!
+  knowledge_base += 1
+  print(knowledge_base)               # IMPORTANT => Indentation again determines what is and isn't part of your function code block.
+
+learn_more()
+learn_more()
+learn_more()
+learn_more()
+
