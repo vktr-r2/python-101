@@ -22,3 +22,7 @@ This repository serves as my notes and practice examples while working through t
 - Loops
   - While loops
   - For loops
+
+- Functions
+  - Parameters
+  - Return Values
