@@ -7,31 +7,19 @@ CONDITIONALS NOTES
 - Return true or false.
 - Can nest if statments to add subsequent tests
 - Can add multiple testing conditions in an if statement with or/and operators to test multiple conditions at once
-"""
 
-
-
-"""
 IF STATEMENTS
 
 - Execute some statements IF a test evaluates to true
 - Do nothing if test evaluates to false
-"""
 
-
-
-"""
 ELIF STATEMENTS
 
 - Short for else if
 - Allows you to chain extra if statement tests to allow for more outocmes
 - Only executed if previous test(s) fail
 - Come after if statement
-"""
 
-
-
-"""
 ELSE STATEMENTS
 
 - Provides a catch-all or failsafe
@@ -40,5 +28,22 @@ ELSE STATEMENTS
 - Doesn't actually test anything, just executes code
 """
 
+key_press = "r"
+
+if key_press == "r":
+  print("Move right")
+elif key_press == "l":
+  print("Move left")
+else:
+  print("Invalid key")
 
 
+
+"""
+TERNARY OPERATOR
+
+- Serves as a less verbose way of writing an if / else statement
+"""
+
+command = "Move right" if key_press == "r" else "Move left"
+print(command)
