@@ -159,6 +159,13 @@ RANGES
 - Can wrap in reversed() function to count backwards
 """
 
+# range(start, end, step)
+# Only end is manditory
+
+test_range = range(10)            # Will give you a range from 0 - 9 => END NUMBER IS NEVER INCLUDED
+
+test_range_2 = range(1, 11)       # Will give you a range from 1 - 10 => START NUMBER IS INCLUDED 
 
 
-
+test_range_3 = list(range(1, 101, 10))    # Counts from 1 to 91 (Starts at 1, counts by 10, stops at 91 because "end" of 101 will always be excluded)  
+print(test_range_3[0], test_range_3[9])
