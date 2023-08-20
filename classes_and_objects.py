@@ -9,11 +9,12 @@ CLASSES
 - Methods typically defined to change the state of the object (modify variables)
 - Special initializer functions exist that helps to setup the initial state (set default/initial values for the object)
 - Use the initializer to create instances of classes (object)
+- Creating a new class basically creates a new custom variable type to use within your program
 
 * So an object is an 'instance' of a class.  You INSTANTIATE an object
 """
 
-class PlayerCharacter:                                        # Names of classes use Capitalized Camel-case syntax
+class GameCharacter:                                        # Names of classes use Capitalized Camel-case syntax
     
     # x_pos                                                   # Stand alone variables are not declared at the top of classes in Python as they are in other languages.  Instead all these variables are declared in the initializer function
     # health
@@ -47,6 +48,24 @@ OBJECTS
 - Behaviour typically modifies the state of the object
 - Ideally modelled after real life objects?
 """
+
+game_character_one = GameCharacter("Viktor", 0, 100)          # <instance_name> = ClassName(<inital_params>) basically is calling your special /constructor function, so expected params must be passed
+print(type(game_character_one))                               # type() will show you that this program now has a custom GameCharacter variable type
+print(game_character_one.name)                                # prints Viktor
+
+game_character_two = GameCharacter("Hilary", 3, 100)          # Hilary will be second instance of the GameCharacter class, and holds her own values
+print(game_character_two.name)
+
+#game_character_one.name = "Vik"                              # This is frowned upon and should be avoided.  Ideally object state should only be altered by methods, but Python is flexible and allows direct assignment anyways
+
+game_character_two.move(2)                                    # This is how states should be changed, by calling the method
+(print(game_character_two.x_pos))
+
+
+game_character_one.take_damage(200)                           # Viktor takes a critical hit
+print(game_character_one.health)
+print(game_character_one.check_if_dead)
+
 
 
 
