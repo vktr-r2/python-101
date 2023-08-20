@@ -20,7 +20,10 @@ class GameCharacter:                                        # Names of classes u
     # health
     # name
 
-  # Instance method
+  # STATIC VARIABLE (refer to notes at bottom of file)
+  speed = 1.0
+
+  # Instance methods
   def __init__(self, name, x_pos, health):                    # Syntax for initializer function: def __init__(self, <other params>)
     self.name = name                                          #   => every method that isn't a static method MUST HAVE 'SELF' AS FIRST PARAM
     self.x_pos = x_pos
@@ -37,7 +40,9 @@ class GameCharacter:                                        # Names of classes u
   def check_if_dead(self):
     return self.health == 0                                   # Method will only return True if health == 0
   
-
+  # STATIC METHOD (refer to notes at bottom of file)
+  def change_speed(new_speed):                                # Static method doesn't use 'self' param because it doesn't belong to an instance, it is static
+    GameCharacter.speed = new_speed
 
 
 """
@@ -134,18 +139,34 @@ print(pc.num_lives)                                               # Prints that 
 print(pc.check_if_dead())                                         # Viktor is out of lives now.  GAME OVER
 
 
+
+
 """
 STATIC MEMBERS
 
 - Static variables and functions belong to a whole class rather than just an instance
-- Static variables hold their value across all instances of the class
+- Static variables hold their value across all instances of the class => they are constant
 - Don't have to create an instance to get the value because the static property belongs to the class itself, not the instantiated object
 - Static functions follow a similar concept to variables
+- Members = variables or functions
 """
 
+# So far all methods/variables we've written for our PlayerCharacter and GameCharacter classes are INSTANCE methods/variables
+#     => This means that an instance needs to be instanciated first before any of these can be used/modified
 
+# We have just added a STATIC variable called speed, and a STATIC method called change_speed to our GameCharacter superclass (scroll up to see)
+#     => These belong to the class itself, and not each instance of the class
 
+gc_1 = GameCharacter("Wolf", 0, 100) 
+gc_2 = GameCharacter("Bear", 0, 100) 
 
-"""
-OBJECT ACCESS LEVELS
-"""
+print(gc_1.speed)                           # Both these print the same speed, because the static speed variable was made 
+print(gc_2.speed)
+
+GameCharacter.speed = 2.0                   # With one call to the static method we can change the speed for all characters at once
+
+print(gc_1.speed)                           # Both will show that speed is now changed to 2.0
+print(gc_2.speed)
+
+#gc_2.speed = 4.0                           # Even static variables can be manually assigned because of Python's flexibility, but again this goes against best practices 
+
