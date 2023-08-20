@@ -170,3 +170,21 @@ print(gc_2.speed)
 
 #gc_2.speed = 4.0                           # Even static variables can be manually assigned because of Python's flexibility, but again this goes against best practices 
 
+"""
+OBJECT ACCESS LEVELS
+
+- Access modifiers are used by object oriented languages to restrict access of class variables and methods from outside the class.
+- Encapsulation is an Object Oriented Programming (OOP) principle which protecs the internal data of the class using access modifiers
+- Python supports three types of access modifiers (public, private, protected)
+
+
+PUBLIC ACCESS MODIFIER
+
+- By default, all variables and methods when declared are PUBLIC
+- Can be accessed from anywhere outside or inside the class.
+
+"""
+
+# Since every variable and method provided in the examples above was by default private, no further examples are needed
+
+
