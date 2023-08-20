@@ -49,22 +49,22 @@ OBJECTS
 - Ideally modelled after real life objects?
 """
 
-game_character_one = GameCharacter("Viktor", 0, 100)          # <instance_name> = ClassName(<inital_params>) basically is calling your special /constructor function, so expected params must be passed
+game_character_one = GameCharacter("Boss", 10, 100)            # <instance_name> = ClassName(<inital_params>) basically is calling your special /constructor function, so expected params must be passed
 print(type(game_character_one))                               # type() will show you that this program now has a custom GameCharacter variable type
-print(game_character_one.name)                                # prints Viktor
+print(game_character_one.name)                                # prints Minion
 
-game_character_two = GameCharacter("Hilary", 3, 100)          # Hilary will be second instance of the GameCharacter class, and holds her own values
+game_character_two = GameCharacter("Henchman", 5, 100)        # Henchman will be second instance of the GameCharacter class, and holds her own values
 print(game_character_two.name)
 
-#game_character_one.name = "Vik"                              # This is frowned upon and should be avoided.  Ideally object state should only be altered by methods, but Python is flexible and allows direct assignment anyways
+#game_character_two.name = "Lackey"                           # This is frowned upon and should be avoided.  Ideally object state should only be altered by methods, but Python is flexible and allows direct assignment anyways
 
 game_character_two.move(2)                                    # This is how states should be changed, by calling the method
 (print(game_character_two.x_pos))
 
 
-game_character_one.take_damage(200)                           # Viktor takes a critical hit
+game_character_one.take_damage(200)                           # Boss takes a critical hit
 print(game_character_one.health)
-print(game_character_one.check_if_dead)
+print(game_character_one.check_if_dead())
 
 
 
@@ -91,7 +91,47 @@ INHERITANCE
 - Sometimes we override a superclass implementation of a variable or function to provide a new one for the subclass
 """
 
+class PlayableCharacter(GameCharacter):                             # class <SUBCLASS>(<SUPERCLASS):    => at this point the PlayableCharacter class will have everything in the GameCharacter class (same initial paramaters required, methods, etc)        
+    
+  def __init__(self, name, x_pos, health, num_lives):               # Even though this is a subclass, it still needs its own initializer/constructor function  
+    super().__init__(name, x_pos, health)                           # With super().__init__(<params>) we pass the responsibility to superclass' initializer/constructor to set name, x_pos, and health
+    self.max_health = health                                        # This is a property exclusive to the subclass, just set with an existing arg from the superclass
+    self.num_lives = num_lives                                      # This is a property exclusive to the subclass
 
+  def take_damage(self, hit_damage):
+    self.health -= hit_damage
+    if self.health <= 0 and self.num_lives > 0:
+      self.num_lives -= 1
+      self.health = self.max_health
+
+  def check_if_dead(self):
+    return self.health <= 0 and self.num_lives <= 0
+  
+
+pc = PlayableCharacter("Viktor", 0, 100, 3)
+gc = GameCharacter("Minion", 0, 100)
+
+print(pc.max_health)                                              # Works because max_health is a property of the PlayableCharacter class 
+# print(gc.max_health)                                            # Doesn't work because GameCharacter class doesn't have a max_health property
+
+pc.move(2)
+gc.move(2)
+print(pc.x_pos, gc.x_pos)                                         # This works to move both characters to the same spot because both GameCharacter and PlayableCharacter have access to the SAME .move method because it was implemneted in the superclass and not modified in the subclass
+
+pc.take_damage(150)
+gc.take_damage(150)
+print(pc.health, gc.health)                                       # Here we see both the gc and pc take 150 damage, but the gc then prints a health of 0 while the pc shows health of 100
+                                                                  #     => This is because take_damage is implemented differently between the GameCharacter superclass and the PlayerCharacter subclass.  In the subclass, once health is zero, we reset it to max_health and deduct a life
+
+print(gc.check_if_dead)                                           # gc GameCharacter will show True because their health doesn't regenerate
+print(pc.check_if_dead)                                           # pc PlayerCharacter will show False because their health regenerates as long as they have lives left
+print(pc.num_lives)                                               # Prints that Viktor is now down to 2 lives left
+
+pc.take_damage(150)
+print(pc.num_lives)                                               # Prints that Viktor is now down to 1 lives left
+pc.take_damage(150)
+print(pc.num_lives)                                               # Prints that Viktor is now down to 0 lives left
+print(pc.check_if_dead())                                         # Viktor is out of lives now.  GAME OVER
 
 
 """
