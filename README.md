@@ -26,3 +26,9 @@ This repository serves as my notes and practice examples while working through t
 - Functions
   - Parameters
   - Return Values
+
+- Classes & Objects
+  - Using Classes & Objects
+  - Inheritance
+  - Static members
+  - Access Levels
