@@ -48,8 +48,41 @@ print(inventory)
 inventory.pop()                 #<list>.pop() method removes the last indexed item in the list
 print(inventory)
 
-inventory.remove("Boots")      #<list>.remove(<element>) method removes specified item, does not take index
+inventory.remove("Boots")       #<list>.remove(<element>) method removes specified item, does not take index
 print(inventory)
+
+# Slice
+inventory[1:4]                  #<list>[start, end] will slice the list from the start index upto the end (excludes end)
+print(inventory)
+
+inventory[:3]                   #<list>[:end]  will assume 0 to be the start index for your slice
+inventory[-2:]                  #<list>[-start:] will assume the end to be the last index in your list, and value given to start will count backwards from that element
+inventory[:-1]                  #<list>[:-1] will return all but the last element in the list
+
+# Count
+inventory.count("Boots")        #<list>.count(<element>) will return the number of times your specific element appears in the list     
+
+# Sort
+
+"""The .sort() method does not return any value and thus 
+does not need to be assigned to a variable since it modifies 
+the list directly. If we do assign the result of the method, 
+it would assign the value of None to the variable."""
+
+inventory.sort()                #<list>.sort() by default will sort list items in alphabetical/numerical order
+inventory.sort( reverse=True )  #<list>.sort(reverse=True) will sort your list in reverse order
+
+# Sorted
+"""
+The sorted() function is different from the .sort() method in two ways:
+1. It comes before a list, instead of after as all built-in functions do.
+2. It generates a new list rather than modifying the one that already exists.
+"""
+
+new_inventory = sorted(inventory)#sorted(<list>) function will return a new sorted list
+
+
+
 
 inventory.clear()               #<list>.clear() method empties the list.  Can also be achieved via <list> = []
 print(inventory)
@@ -69,6 +102,8 @@ print(two_d_list)
 
 two_d_list[4].append(7)
 print(two_d_list)
+
+
 
 
 
