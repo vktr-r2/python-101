@@ -94,16 +94,20 @@ Syntax:
   - iterable: This is the collection of elements that the list comprehension is iterating over (like a list, tuple, set, etc.).
   - condition (optional): This is a filter that only includes the elements where the condition is True.
 
+- The placement of the conditional expression within the comprehension is dependent on whether or not an else clause is used. 
+When an if statement is used without else, the conditional must go after for <element> in <collection>. 
+If the conditional expression includes an else clause, the conditional must go before for. 
+Attempting to write the expressions in any other order will result in a SyntaxError.
 """
 
+# If statement syntax (conditional is optional)
+numbers = [2, -1, 79, 33, -45]
+negative_doubled = [num * 2 for num in numbers if num < 0]
+print(negative_doubled)
+# would output [-2, -90]
 
 numbers = [2, -1, 79, 33, -45]
-only_negative_doubled = []
+doubled_or_tripled = [num * 2 if num < 0 else num * 3 for num in numbers ]
+print(doubled_or_tripled)
+# would output [6, -2, 237, 99, -90]
 
-for num in numbers:
-  if num < 0: 
-    only_negative_doubled.append(num * 2)
-
-print(only_negative_doubled)
-
-# would output [-2, -90]
