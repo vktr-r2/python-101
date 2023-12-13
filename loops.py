@@ -76,3 +76,34 @@ for item in inventory:
 while i < len(inventory):
   print(inventory[i])
   i += 1
+
+
+
+"""
+List Comprehensions
+
+- List comprehension is a concise way to create lists in Python. 
+- It offers a shorter syntax when you want to create a new list based on the values of an existing list or any iterable 
+like strings, tuples, etc.
+
+Syntax:
+[<expression> for <item> in <iterable> if <condition>]
+
+  - expression: This is like the output expression that decides what to put in the new list. It's often a function of the item.
+  - item: This is the variable representing each element in the iterable.
+  - iterable: This is the collection of elements that the list comprehension is iterating over (like a list, tuple, set, etc.).
+  - condition (optional): This is a filter that only includes the elements where the condition is True.
+
+"""
+
+
+numbers = [2, -1, 79, 33, -45]
+only_negative_doubled = []
+
+for num in numbers:
+  if num < 0: 
+    only_negative_doubled.append(num * 2)
+
+print(only_negative_doubled)
+
+# would output [-2, -90]
