@@ -228,10 +228,10 @@ As long as the keywords match the function parameter names, we can accomplish th
 
 numbers  = {'num1': 3, 'num2': 6, 'num3': 9}
 
-def sum(num1, num2, num3):
+def my_sum(num1, num2, num3):
   print(num1 + num2 + num3)
 
-sum(**numbers)
+my_sum(**numbers)
 
 """
 We can even use the operators inside of built-in functions. For example, 
