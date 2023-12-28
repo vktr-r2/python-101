@@ -207,5 +207,116 @@ when they have the same height:
 
 """
 
+def make_box_volume_function(height):
+    # defines and returns a function that takes two numeric arguments,        
+    # length &  width, and returns the volume given the input height
+    def volume(length, width):
+        return length*width*height
+
+    return volume
+ 
+box_volume_height15 = make_box_volume_function(15)
+ 
+print(box_volume_height15(3,2))
 
 
+###########################################################################
+###########################################################################
+
+"""
+BUILT-IN HIGHER-ORDER FUNCTIONS
+
+1) map()
+2) filter()
+3) reduce()
+
+
+1) map()
+
+The map() higher-order function has the following base structure:
+
+returned_map_object = map(function, iterable)
+
+When called, map() applies the passed function to each and every element in the iterable 
+and returns a map object. The returned map object holds the results from applying the 
+mapping function to each element in the passed iterable. We will usually convert the map 
+into a list to enable viewing and further use.
+"""
+
+def double(number):
+   return number * 2
+
+list_of_numbers = [5, 10, 15, 100, 500]
+
+map_results = map(double, list_of_numbers)
+
+# if you print(map_results), you will see that map_results is a map object
+# if you print(list(map_results)), you will see a list of all the returned results
+# same as if you called function(5), function(10), function(15), function(100), function(500) and stored all the results in a list
+
+"""
+Higher-order functions like map() work especially well with lambda functions. Because lambda 
+functions are anonymous, we dont need to define a new named function for map() if that 
+function wont be used again elsewhere. In this case, if we dont plan on reusing double() 
+somewhere else in our program, we can rewrite the double() function from the previous example 
+with a lambda function like so:
+"""
+
+doubled = map(lambda input: input*2, list_of_numbers)
+
+
+
+"""
+2) filter()
+
+Similar to map(), the filter() function takes a function and an iterable as arguments. Just as 
+the name suggests, the goal of the filter() function is to “filter” values out of an iterable.
+
+The filter() function accomplishes this goal by applying a passed filtering function to each
+element in the passed iterable. The filtering function should be a function that returns a boolean 
+value: True or False. The returned filter object will hold only those elements of the passed 
+iterable for which the filtering function returned True.
+"""
+
+names = ["margarita", "Linda", "Masako", "Maki", "Angela"]
+ 
+M_names = filter(lambda name: name[0] == "M" or name[0] == "m", names) 
+ 
+print(list(M_names))                            # >> ['margarita', 'Masako', 'Maki']
+
+
+"""
+3) reduce()
+
+Lastly, we have the reduce() function, which has two distinct differences from the built-in 
+higher-order functions that we have learned so far.
+
+    i) In contrast to the map() and filter() functions that are always available, the reduce() 
+    function must be imported from the functools module to use it.
+
+    ii) reduce() returns a SINGLE VALUE. To get to this single value, reduce() 
+    cumulatively applies a passed function to each sequential pair of elements in an iterable.
+
+Let’s see what this looks like in practice by using reduce() to multiply together all the values in a list:
+"""
+
+from functools import reduce
+ 
+int_list = [3, 6, 9, 12]
+ 
+reduced_int_list = reduce(lambda x,y: x*y, int_list)
+ 
+print(reduced_int_list)
+
+
+"""
+In this example:
+
+i)      The reduce() function takes 2 arguments: a lambda function and a list of integers.
+ii)     The lambda function takes 2 numbers, x and y and multiplies them together.
+iii)    The reduce() function applies the lambda function to the first two elements in the list, 3 and 6, to get a product of 18.
+iv)     Next, 18 was multiplied by the following element in the list, 9, to get 162.
+v)      Continuing on, 162 was multiplied by the next element, 12, to get 1944.
+vi)     This last, final value—1944—is what was returned by reduce().
+vii)    This process was essentially the same as multiplying 3*6*9*12.
+"""
